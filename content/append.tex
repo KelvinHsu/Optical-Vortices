@@ -34,7 +34,7 @@ $a_0$ and $\beta$ are constants representing the amplitudes of carrier and modul
 %\end{figure}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width = 0.4\textwidth]{primary_waves.pdf}
+	\includegraphics[width = 0.4\textwidth]{primary_waves.jpg}
 	\caption{Illustration for the primary waves $A$ and $B$.}
 	\label{fig:two_primary_waves}
 \end{figure}
@@ -88,7 +88,7 @@ In this perspective, Eq. (\ref{eq:single_vortex}) can be extended to the form
 \end{eqnarray}
 which still complies with Eq. (\ref{eq:wave}). Eq. (\ref{eq:vortex_m}) describes vortices with strength, or more precisely, topological charge, equals $m$. To define the topological charge, we consider a closed curve $C$ in the $(\bar{r}, t)$-space and perform the following steps:
 \begin{enumerate}
-	\item Around the curve $C$ the phase angle $\Phi$ may undergo a change of $2n \pi$, with $n \in \mathbb{Z}$ and $n \neq 0$.
+	\item Around the curve $C$ the phase angle $\Phi$ may undergo a change of $2n \pi$, with $n \in {\cal Z}$ and $n \neq 0$.
 	\item Shrink the closed curve $C$ to an arbitrarily small loop without changing $n$.
 	\item If such a curve $C$ can be found, then $C$ is claimed to enclose a singularity because $\Phi$ varies infinitely fast 
 	around the center point.
@@ -100,16 +100,15 @@ A winding number $S_C$, characterizing the strength of this singularity, is defi
 \end{eqnarray}
 where $C$ is a contour enclosing the singularity.
 
-\textcolor{blue}{
 \section*{Appendix II: 2-D Fourier Transformation of Vortex Beam}
 To compute the counterpart in frequency domain of the field $U(r, \phi, 0) = e^{i\phi}$, we recall the Fourier transformation pair
 \begin{eqnarray}
-A(f_x, f_y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} U(x, y, z)
-e^{-i 2 \pi (f_x x + f_y y)} dx dy
-\nonumber\\
-U(x, y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} A(f_x, f_y, z)
-e^{i 2 \pi (f_x x + f_y y)} df_x df_y.
-\nonumber
+	A(f_x, f_y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} U(x, y, z)
+	e^{-i 2 \pi (f_x x + f_y y)} dx dy
+	\nonumber\\
+	U(x, y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} A(f_x, f_y, z)
+	e^{i 2 \pi (f_x x + f_y y)} df_x df_y.
+	\nonumber
 \end{eqnarray}
 Perform the following change of variable:
 \begin{eqnarray}
@@ -134,20 +133,18 @@ To sum up, the 2-D Fourier transformation pair in cylindrical coordinate is repr
 	e^{i 2 \pi r \rho \cos(\phi - \chi)} \rho d\rho d\chi.
 	\nonumber
 \end{eqnarray}
-}
 
-\textcolor{blue}{
-Therefore, one can compute $\mathcal{F}\{e^{i\phi}\}$ as follows:
+Therefore, one can compute ${\cal F} \{e^{i\phi}\}$ as follows:
 \begin{eqnarray}
 	&&A(\rho, \chi, 0) = \int_{0}^{2\pi} e^{i\phi} 
-		\left(\int_{0}^{\infty} e^{-i2\pi \rho r \cos(\phi - \chi)} r dr\right) d\phi
+	\left(\int_{0}^{\infty} e^{-i2\pi \rho r \cos(\phi - \chi)} r dr\right) d\phi
 	\nonumber\\
 	&&\hspace{0.5in}= \int_{0}^{2\pi} \frac{-e^{i\phi}}{4 \pi^2 \rho^2 \cos^2(\phi - \chi)} d\phi
 	\nonumber\\
 	&&\hspace{0.5in}= \frac{1}{\pi^2 \rho^2} \int_{0}^{2\pi} \frac{-e^{i\phi} d\phi}{e^{i(\phi - \chi)} + e^{-i(\phi - \chi)}}
 	\nonumber\\
 	&&\hspace{0.5in}= \frac{ e^{i\chi} }{\pi^2 \rho^2} \int_{\chi}^{\chi + 2\pi}
-		\frac{-e^{i\phi'} d\phi'}{e^{i\phi'} + e^{-i\phi'}},
+	\frac{-e^{i\phi'} d\phi'}{e^{i\phi'} + e^{-i\phi'}},
 	\hspace{0.1in} (\phi' = \phi - \chi)
 	\nonumber\\
 	&&\hspace{0.5in}= \frac{i e^{i \chi}}{\pi^2 \rho^2} \oint_C \frac{dz}{(z + z^{-1})^2}
@@ -169,15 +166,15 @@ where $C_{\epsilon}$ is a curve defined as Fig. \ref{fig:contour}.
 %	\label{fig:contour}
 %\end{figure}
 \begin{figure}
-	\centering
-	\includegraphics[width = .4\textwidth]{contour.pdf}
-	\caption{Contour of $C_{\epsilon}$, which is formed by the boundary of the union of the unit circle centered at the origin and two circles with radius $\epsilon$ centered at $i, -i$, repectively.}
-	\label{fig:contour}
+		\centering
+		\includegraphics[width = .4\textwidth]{contour.jpg}
+		\caption{Contour of $C_{\epsilon}$, which is formed by the boundary of the union of the unit circle centered at the origin and two circles with radius $\epsilon$ centered at $i, -i$, repectively.}
+		\label{fig:contour}
 \end{figure}
 Note that $C_{\epsilon} \rightarrow C$ as $\epsilon \rightarrow 0$. The contour integration on $C_{\epsilon}$, on the other hand, can be evaluated by residue theorem.
 \begin{eqnarray}
-\oint_{C_{\epsilon}} \frac{z^2}{(z^2 + 1)^2} = 2\pi i \left( {\rm Res}(f; i) + {\rm Res}(f; -i) \right),
-\label{eq:thm_residue}
+	\oint_{C_{\epsilon}} \frac{z^2}{(z^2 + 1)^2} = 2\pi i \left( {\rm Res}(f; i) + {\rm Res}(f; -i) \right),
+	\label{eq:thm_residue}
 \end{eqnarray}
 with $f$ denoting the integrand in Eq. (\ref{eq:CPV}). By invoking the identity ${\rm Res}(f; a) = 1/(n-1)! \lim_{z \rightarrow a} d^n (z - a)^n f(z) /dz^n$ for a pole $a$ of order $n$, the residues can be computed:
 \begin{eqnarray}
@@ -188,9 +185,7 @@ Hence, Eq. (\ref{eq:thm_residue}) yields
 \begin{eqnarray}
 	A(\rho, \chi, 0) = \frac{- e^{i \chi}}{\pi \rho^2}. (?)
 \end{eqnarray}
-}
 
-\textcolor{blue}{
 \section*{Appendix III: Paraxial Wave Eqation}
 Given a monochromatic electromagnetic field $\tilde{U}(x, y, z) \exp(-i \omega t) = U(x, y, z)\exp[i (kz - \omega t)]$, we have known that it satisfies the Helmholtz equation
 \begin{eqnarray}
@@ -200,7 +195,7 @@ Given a monochromatic electromagnetic field $\tilde{U}(x, y, z) \exp(-i \omega t
 If we compute
 \begin{eqnarray}
 	\frac{\partial^2}{\partial z^2} U(x, y, z)e^{ikz} = e^{ikz}
-		\left( \frac{\partial^2 U}{\partial z^2} + 2ik \frac{\partial U}{\partial z} - k^2 U \right),
+	\left( \frac{\partial^2 U}{\partial z^2} + 2ik \frac{\partial U}{\partial z} - k^2 U \right),
 	\nonumber
 \end{eqnarray}
 Then Eq. (\ref{eq:helmholtz}) becomes
@@ -219,4 +214,63 @@ which can be interpreted physically that the variation along $z$-axis is so smal
 	\label{eq:pwe}
 \end{eqnarray}
 Usually, laser beams satisfy the paraxial approximation (\ref{eq:paraxial}) very well, whence it is convenient to model them by Eq. (\ref{eq:pwe}).
-}
+
+\section*{Appendix IV: Fast Fourier Transform}
+Here we introduce a powerful algorithm to evaluate a Fourier transform numerically. In the first step, one needs to converse the continuous time-domain (or, in our case, space-domain) function to a digital one. The corresponding transformation pair is called {\em digital Fourier transform} (DFT).
+
+Let $U = U(x)$ be a single-variable function of space. In order to perform DFT suitably, the space function $U$ must have a bounded support, i.e. there is some finite number $X_0$ such that $U(x) = 0$ unless $|x| \leq X_0$. Otherwise, the function $U(x)$ must be {\em windowed}. Therefore, we may well suppose that $U(x) \neq 0$ only if $0 \leq x \leq X_0$. Now pick $N$ equispaced sample points $x = 0, X_s, 2X_s, \dots, (N-1)X_s$, where $X_s = X_0/N$, and then we can represent the sampled function $U_{\delta}$ by
+\begin{eqnarray}
+	&&U_{\delta} = U(x) \cdot \sum_{n = 0}^{N-1} \delta(x - n X_s)
+	\nonumber\\
+	&&\hspace{0.2in} = \sum_{n = 0}^{N-1} U(n X_s) \delta(x - n X_s),
+\end{eqnarray}
+with $\delta$ being the Dirac delta function. The corresponding discrete-time Fourier transform is given by
+\begin{eqnarray}
+	A_{\delta}(\nu) = \int_{-\infty}^{\infty} U_{\delta}(x) e^{-i \nu x} dx
+	\nonumber\\
+	\hspace{0.3in} = \sum_{n = 0}^{N - 1} U(n X_s) e^{-i \nu n X_s}.
+\end{eqnarray}
+Our next step is to discretize the spectrum as well, which is equivalent to making $U_{\delta}$ a periodic function in the space-domain. Let $U'(x)$ be such a periodic function extended from $U_{\delta}$ with period $X_0$, i.e.
+\begin{eqnarray}
+	U'(x) = U_{\delta}(x) * \sum_{m = -\infty}^{\infty} \delta(x - m X_0),
+\end{eqnarray}
+where $*$ denotes the convolution. We have the corresponding spectrum
+\begin{eqnarray}
+	&& A'(\nu) = A_{\delta} \cdot \frac{2\pi}{X_0} \sum_{m = -\infty}^{\infty} \delta(\nu - \frac{2\pi m}{X_0})
+	\nonumber\\
+	&&= \frac{2\pi}{X_0} \sum_{m = -\infty}^{\infty} \left(\sum_{n = 0}^{N - 1}
+		U(n \frac{X_0}{N}) e^{-i 2\pi m n/ N}\right) \delta(\nu - \frac{2\pi m}{X_0}).
+	\nonumber
+\end{eqnarray}
+Define $U[n] = U(n X_0 / N)$ and
+\begin{eqnarray}
+	A[m] = \sum_{n = 0}^{N - 1} U[n] e^{-i 2\pi m n/ N}.
+	\label{eq:DFT}
+\end{eqnarray}
+Eq. (\ref{eq:DFT}) is the definition of digital Fourier transform. Note that we have the relation
+\begin{eqnarray}
+	&&A(\frac{2 \pi m}{X_0}) = \frac{2\pi}{X_0} \sum_{k = -\infty}^{\infty} A[k]
+		\delta(\frac{2 \pi}{X_0} (m - k))
+	\nonumber\\
+	&&\hspace{0.5in}=  \frac{2\pi}{X_0} A[m] \delta(0).
+\end{eqnarray}
+In order to obtain the expression for inverse digital Fourier transform, we recall the identity
+\begin{eqnarray}
+	\sum_{k = 0}^{N - 1} e^{-i 2 \pi k(n - m)/N} = N \delta(n - m),
+\end{eqnarray}
+from which and Eq. (\ref{eq:DFT}) we will end up with
+\begin{eqnarray}
+	&&\sum_{k = 0}^{N - 1} A[k] e^{i 2 \pi mk/N} 
+	\nonumber\\
+	&&\hspace{0.3in} = \sum_{k = 0}^{N - 1} \sum_{n = 0}^{N - 1} U[n] e^{-i 2 \pi k(n - m)/N}
+	\nonumber\\
+	&&\hspace{0.3in} = N \sum_{n = 0}^{N - 1} U[n] \delta(n - m) = N U[m].
+\end{eqnarray}
+To sum up, the definitions of DFT and inverse DFT are obtained from the known continuous Fourier transform and represented as
+\begin{eqnarray}
+	&&A[m] = \sum_{n = 0}^{N - 1} U[n] e^{-i 2\pi m n/ N}
+	\nonumber\\
+	&&U[n] = \frac{1}{N} \sum_{m = 0}^{N - 1} A[m] e^{i 2 \pi mn/N}.
+	\label{eq:DFT_pairs}
+\end{eqnarray}
+The definition shown in Eq. (\ref{eq:DFT_pairs}) also corresponds to that of MATLAB, so there is no need to amend equations while working on the codes.
