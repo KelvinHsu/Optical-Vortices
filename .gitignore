@@ -4,6 +4,8 @@
 *.gz
 *.bbl
 *.blg
+*.mat
+*.key
 reference
 versions
 files_for_jfk

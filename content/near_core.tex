@@ -26,16 +26,16 @@ By assuming paraxial approximation, the term $\bar{k} \cdot \bar{d}$ is regarded
 
 \subsection{Angular spectrum method}
 
-To analyze the phase delay, we need to introduce the angular spectrum method. Consider an abitrary complex-valued field $U(x, y, z)$. On a plane $z = z_1$, one can define its counterpart in frequency domain $A(f_x, f_y, z_1)$, which is related to $U(x, y, z_1)$ by the 2D Fourier transformation pair,
+To analyze the phase delay, we need to introduce the angular spectrum method. Consider an abitrary complex-valued field $U(x, y, z)$. On a plane $z = z_1$, one can define its counterpart in frequency domain $A(\nu_x, \nu_y, z_1)$, which is related to $U(x, y, z_1)$ by the 2D Fourier transformation pair,
 \begin{eqnarray}
-	A(f_x, f_y, z_1) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} U(x, y, z_1)
-	e^{-i 2 \pi (f_x x + f_y y)} dx dy
+	A(\nu_x, \nu_y, z_1) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} U(x, y, z_1)
+	e^{-i 2 \pi (\nu_x x + \nu_y y)} dx dy
 	\nonumber\\
-	U(x, y, z_1) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} A(f_x, f_y, z_1)
-	e^{i 2 \pi (f_x x + f_y y)} df_x df_y.
+	U(x, y, z_1) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} A(\nu_x, \nu_y, z_1)
+	e^{i 2 \pi (\nu_x x + \nu_y y)} d\nu_x d\nu_y.
 	\nonumber
 \end{eqnarray}
-Here the Fourier basis function $e^{i2\pi (f_x x + f_y y)}$ can be interpreted as a plane wave of unit amplitude transmitting with the direction cosines $\cos\theta_x = \lambda f_x$, $\cos\theta_y = \lambda f_y$ and $\cos\theta_z = (1 - (\lambda f_x)^2 - (\lambda f_y)^2)^{1/2}$ \cite{Fo04}. (See Fig. \ref{fig:dirc_cos} for reference on direction cosine.)
+Here the Fourier basis function $e^{i2\pi (\nu_x x + \nu_y y)}$ can be interpreted as a plane wave of unit amplitude transmitting with the direction cosines $\cos\theta_x = \lambda \nu_x$, $\cos\theta_y = \lambda \nu_y$ and $\cos\theta_z = (1 - (\lambda \nu_x)^2 - (\lambda \nu_y)^2)^{1/2}$ \cite{Fo04}. (See Fig. \ref{fig:dirc_cos} for reference on direction cosine.)
 % Unable to show figure?
 %\begin{figure}[h]
 %	\vskip 3 cm
@@ -54,9 +54,9 @@ With this perspective, the 2-D Fourier transform becomes the decompostion of a f
 
 
 \subsection{Analysis on the propagation of vortex beam}
-If the field $U(x, y, z)$ represents an electromagnetc wave, e.g. a vortex beam, then it must satisfy Helmholtz's equation $(\nabla^2 + k^2) U  = 0$. Supposing that $A(f_x, f_y, z)$ is a smooth function in $z$, one can substitute $U$ by the inverse 2-D Fourier transformation of $A$ into Helmholtz's equation and exchange the order of differentiation and integration. Finally, we will end up with the differential equation
+If the field $U(x, y, z)$ represents an electromagnetc wave, e.g. a vortex beam, then it must satisfy Helmholtz's equation $(\nabla^2 + k^2) U  = 0$. Supposing that $A(\nu_x, \nu_y, z)$ is a smooth function in $z$, one can substitute $U$ by the inverse 2-D Fourier transformation of $A$ into Helmholtz's equation and exchange the order of differentiation and integration. Finally, we will end up with the differential equation
 \begin{eqnarray}
-	\frac{\partial^2 A}{\partial z^2} + \left[ k^2 - 4\pi^2\left( f_x^2 + f_y^2 \right) \right] A= 0,
+	\frac{\partial^2 A}{\partial z^2} + \left[ k^2 - 4\pi^2\left( \nu_x^2 + \nu_y^2 \right) \right] A= 0,
 	\nonumber
 \end{eqnarray}
 which is in the harmonic form and has the general solution
@@ -64,14 +64,14 @@ which is in the harmonic form and has the general solution
 	A(x, y, z) = C(x, y) e^{i (\mu z + \theta)},
 	\nonumber
 \end{eqnarray}
-where $\mu = \sqrt{k^2 - 4\pi^2\left( f_x^2 + f_y^2 \right)}$, $C$ is independent of $z$ and $\theta$ is some constant. Given the initial condition $A(x, y, 0)$, the expression is further reduced to
+where $\mu = \sqrt{k^2 - 4\pi^2\left( \nu_x^2 + \nu_y^2 \right)}$, $C$ is independent of $z$ and $\theta$ is some constant. Given the initial condition $A(x, y, 0)$, the expression is further reduced to
 \begin{eqnarray}
 	A(x, y, z) = A(x, y, 0) e^{i \mu z}.
 	\label{eq:spectrum_phase}
 \end{eqnarray}
-If $k^2 \ge 4\pi^2 (f_x^2 + f_y^2)$, $\mu$ will be a real number and Eq. (\ref{eq:spectrum_phase}) then corresponds to a propagating frequency $(f_x, f_y)$. On the other hand, if $k^2 < 4\pi^2 (f_x^2 + f_y^2)$, $\mu$ becomes pure imaginary and Eq. (\ref{eq:spectrum_phase}) will decay as $z$ increases. The latter situation is said to be {\em evanescent}.
+If $k^2 \ge 4\pi^2 (\nu_x^2 + \nu_y^22)$, $\mu$ will be a real number and Eq. (\ref{eq:spectrum_phase}) then corresponds to a propagating frequency $(\nu_x, \nu_y)$. On the other hand, if $k^2 < 4\pi^2 (\nu_x^2 + \nu_y^2)$, $\mu$ becomes pure imaginary and Eq. (\ref{eq:spectrum_phase}) will decay as $z$ increases. The latter situation is said to be {\em evanescent}.
 
-By means of Eq. (\ref{eq:spectrum_phase}), the spectrum in two arbitrary transverse planes $z = z_1, z_2$ can be related by $A(f_x, f_y, z_2) = e^{i \mu (z_2 - z_1)} A(f_x, f_y, z_1)$. Having established the angular spectrum method, we can, given the initial field distribution $U(x, y, 0)$, analyze the evolution of vortex beam field $U(x, y, z)$ as $z$ increases by working on the frequency domain,
+By means of Eq. (\ref{eq:spectrum_phase}), the spectrum in two arbitrary transverse planes $z = z_1, z_2$ can be related by $A(\nu_x, \nu_y, z_2) = e^{i \mu (z_2 - z_1)} A(\nu_x, \nu_y, z_1)$. Having established the angular spectrum method, we can, given the initial field distribution $U(x, y, 0)$, analyze the evolution of vortex beam field $U(x, y, z)$ as $z$ increases by working on the frequency domain,
 
 %\begin{figure}[h]
 %	\vskip 3 cm
@@ -86,11 +86,11 @@ By means of Eq. (\ref{eq:spectrum_phase}), the spectrum in two arbitrary transve
 	\caption{The commutation diagram.}
 \end{figure}
 
-Due to the fact that the above commutation diagram commutes, we can obtain the field expression $U(x, y, z)$ given $U(x, y, 0)$ by transforming $U(x, y, 0)$ to frequency-doamin, performing a frequency response of $e^{i \mu z}$ and trasforming the result back to the time-domain. Recall that the field expression of a on-axis vortex beam with $m = 1$ is represented by $\psi = Ce^{i (\phi + k_z z)}$ for some constant $C$. Hence, we may suppose without loss of generousity that $C = 1$ and put $U(x, y, 0) = e^{i\phi}$. The corresponding $A(f_x, f_y, 0)$ can be then computed by 2-D Fourier transformation in cylindrical coordinates (see Appendix II),
+Due to the fact that the above commutation diagram commutes, we can obtain the field expression $U(x, y, z)$ given $U(x, y, 0)$ by transforming $U(x, y, 0)$ to frequency-doamin, performing a frequency response of $e^{i \mu z}$ and trasforming the result back to the time-domain. Recall that the field expression of a on-axis vortex beam with $m = 1$ is represented by $\psi = Ce^{i (\phi + k_z z)}$ for some constant $C$. Hence, we may suppose without loss of generousity that $C = 1$ and put $U(x, y, 0) = e^{i\phi}$. The corresponding $A(\nu_x, \nu_y, 0)$ can be then computed by 2-D Fourier transformation in cylindrical coordinates (see Appendix II),
 \begin{eqnarray}
 	A(\rho, \chi, 0) = \frac{-i e^{i\chi}}{2\pi \rho^2},
 \end{eqnarray}
-where $\rho^2 = f_x^2 + f_y^2$, $ \chi = \arctan(f_y/f_x)$. After a propagation over a distance $z$, the angular spectrum becomes
+where $\rho^2 = \nu_x^2 + \nu_y^2$, $ \chi = \arctan(\nu_y/\nu_x)$. After a propagation over a distance $z$, the angular spectrum becomes
 \begin{eqnarray}
 	A(\rho, \chi, z) = \frac{-i e^{i(\mu z + \chi)}}{2\pi \rho^2}.
 \end{eqnarray}

@@ -103,25 +103,25 @@ where $C$ is a contour enclosing the singularity.
 \section*{Appendix II: 2-D Fourier Transformation of Vortex Beam}
 To compute the counterpart in frequency domain of the field $U(r, \phi, 0) = e^{i\phi}$, we recall the Fourier transformation pair
 \begin{eqnarray}
-	A(f_x, f_y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} U(x, y, z)
-	e^{-i 2 \pi (f_x x + f_y y)} dx dy
+	A(\nu_x, \nu_y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} U(x, y, z)
+	e^{-i 2 \pi (\nu_x x + \nu_y y)} dx dy
 	\nonumber\\
-	U(x, y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} A(f_x, f_y, z)
-	e^{i 2 \pi (f_x x + f_y y)} df_x df_y.
+	U(x, y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} A(\nu_x, \nu_y, z)
+	e^{i 2 \pi (\nu_x x + \nu_y y)} d\nu_x d\nu_y.
 	\nonumber
 \end{eqnarray}
 Perform the following change of variable:
 \begin{eqnarray}
 	x = r\cos\phi & y = r\sin\phi & r \ge 0, 0 \le \phi \le 2\pi
 	\nonumber\\
-	f_x = \rho\cos\chi & f_y = \rho\sin\chi & \rho \ge 0, 0 \le \chi \le 2\pi
+	\nu_x = \rho\cos\chi & \nu_y = \rho\sin\chi & \rho \ge 0, 0 \le \chi \le 2\pi
 	\nonumber
 \end{eqnarray}
 Thus, we have
 \begin{eqnarray}
-	&&dx dy = r dr d\phi, \hspace{0.1in} df_x df_y = \rho d\rho d\chi,
+	&&dx dy = r dr d\phi, \hspace{0.1in} d\nu_x d\nu_y = \rho d\rho d\chi,
 	\nonumber\\
-	&&xf_x + yf_y = r\rho \cos(\phi - \chi).
+	&&x\nu_x + y\nu_y = r\rho \cos(\phi - \chi).
 	\nonumber
 \end{eqnarray}
 To sum up, the 2-D Fourier transformation pair in cylindrical coordinate is represented by
@@ -216,61 +216,55 @@ which can be interpreted physically that the variation along $z$-axis is so smal
 Usually, laser beams satisfy the paraxial approximation (\ref{eq:paraxial}) very well, whence it is convenient to model them by Eq. (\ref{eq:pwe}).
 
 \section*{Appendix IV: Fast Fourier Transform}
-Here we introduce a powerful algorithm to evaluate a Fourier transform numerically. In the first step, one needs to converse the continuous time-domain (or, in our case, space-domain) function to a digital one. The corresponding transformation pair is called {\em digital Fourier transform} (DFT).
 
-Let $U = U(x)$ be a single-variable function of space. In order to perform DFT suitably, the space function $U$ must have a bounded support, i.e. there is some finite number $X_0$ such that $U(x) = 0$ unless $|x| \leq X_0$. Otherwise, the function $U(x)$ must be {\em windowed}. Therefore, we may well suppose that $U(x) \neq 0$ only if $0 \leq x \leq X_0$. Now pick $N$ equispaced sample points $x = 0, X_s, 2X_s, \dots, (N-1)X_s$, where $X_s = X_0/N$, and then we can represent the sampled function $U_{\delta}$ by
+Let $u(x)$ be a single-variable function of $x$.
+In order to perform DFT suitably, the function $U$ must have a bounded support, namely,
+$u(x) = 0$ unless $|x| \leq L_x$, where $L_x$ is a finite number.
+Otherwise, the function $u(x)$ must be truncated such that $u(x) \neq 0$ only if $0 \leq x \leq L_x$. 
+
+Consider $N$ equispaced samples at $x = n \Delta x$, where $\Delta x = L_x / N$.
+Thus, $u (x)$ is sampled to form a sequence $\{ u[n] \}$, with
 \begin{eqnarray}
-	&&U_{\delta} = U(x) \cdot \sum_{n = 0}^{N-1} \delta(x - n X_s)
-	\nonumber\\
-	&&\hspace{0.2in} = \sum_{n = 0}^{N-1} U(n X_s) \delta(x - n X_s),
+&&u [n] = u (x = n \Delta x)
+\nonumber
 \end{eqnarray}
-with $\delta$ being the Dirac delta function. The corresponding discrete-time Fourier transform is given by
+The Fourier transform of $u(x)$ is discretized as
 \begin{eqnarray}
-	A_{\delta}(\nu) = \int_{-\infty}^{\infty} U_{\delta}(x) e^{-i \nu x} dx
-	\nonumber\\
-	\hspace{0.3in} = \sum_{n = 0}^{N - 1} U(n X_s) e^{-i \nu n X_s}.
+&&\hspace{-0.3in} U (\nu) = \int_{-\infty}^{\infty} u (x) e^{- i 2 \pi \nu x} dx
+\simeq \Delta x \sum_{n = 0}^{N - 1} u (n \Delta x) e^{- i 2 \pi \nu n \Delta x}
+\nonumber
 \end{eqnarray}
-Our next step is to discretize the spectrum as well, which is equivalent to making $U_{\delta}$ a periodic function in the space-domain. Let $U'(x)$ be such a periodic function extended from $U_{\delta}$ with period $X_0$, i.e.
+The spectrum is also discretized as
 \begin{eqnarray}
-	U'(x) = U_{\delta}(x) * \sum_{m = -\infty}^{\infty} \delta(x - m X_0),
+&&\hspace{-0.3in} U[m] = U (m \Delta \nu)  \simeq \Delta x \sum_{n = 0}^{N - 1} u [n] e^{- i 2 \pi m \Delta \nu n \Delta x}
+\label{eqn_3041}
 \end{eqnarray}
-where $*$ denotes the convolution. We have the corresponding spectrum
+By demanding the uncertainty principle that $\Delta \nu \Delta x =  1/N$,
+(\ref{eqn_3041}) is reduced to
 \begin{eqnarray}
-	&& A'(\nu) = A_{\delta} \cdot \frac{2\pi}{X_0} \sum_{m = -\infty}^{\infty} \delta(\nu - \frac{2\pi m}{X_0})
-	\nonumber\\
-	&&= \frac{2\pi}{X_0} \sum_{m = -\infty}^{\infty} \left(\sum_{n = 0}^{N - 1}
-		U(n \frac{X_0}{N}) e^{-i 2\pi m n/ N}\right) \delta(\nu - \frac{2\pi m}{X_0}).
-	\nonumber
+&&U[m] \simeq \Delta x \sum_{n = 0}^{N - 1} u [n] e^{- i 2 \pi m n / N}
+\label{eqn_3042}
 \end{eqnarray}
-Define $U[n] = U(n X_0 / N)$ and
+
+Similarly, the inverse Fourier transform of $U (\nu)$ is discretized as
 \begin{eqnarray}
-	A[m] = \sum_{n = 0}^{N - 1} U[n] e^{-i 2\pi m n/ N}.
-	\label{eq:DFT}
+&&\hspace{-0.3in} u(x) = \int_{-\infty}^{\infty} U (\nu) e^{i 2 \pi \nu x} d \nu
+\simeq \Delta \nu \sum_{m = 0}^{N - 1} U (m \Delta \nu) e^{i 2 \pi m \Delta \nu x}
+\nonumber
 \end{eqnarray}
-Eq. (\ref{eq:DFT}) is the definition of digital Fourier transform. Note that we have the relation
+which is discretized as
 \begin{eqnarray}
-	&&A(\frac{2 \pi m}{X_0}) = \frac{2\pi}{X_0} \sum_{k = -\infty}^{\infty} A[k]
-		\delta(\frac{2 \pi}{X_0} (m - k))
-	\nonumber\\
-	&&\hspace{0.5in}=  \frac{2\pi}{X_0} A[m] \delta(0).
+&&u[n] = u(n \Delta x) 
+\simeq \Delta \nu \sum_{m = 0}^{N - 1} U [m] e^{i 2 \pi m \Delta \nu n \Delta x} 
+\nonumber \\
+&&= \frac{1}{N \Delta x} \sum_{m = 0}^{N - 1} U [m] e^{i 2 \pi m n /N} 
+\label{eqn_3043}
 \end{eqnarray}
-In order to obtain the expression for inverse digital Fourier transform, we recall the identity
+
+In MATLAB, the FFT and the IFFT are defined as
 \begin{eqnarray}
-	\sum_{k = 0}^{N - 1} e^{-i 2 \pi k(n - m)/N} = N \delta(n - m),
+&&A[m] = \sum_{n = 0}^{N - 1} a[n] e^{-i 2\pi m n/ N}
+\nonumber \\
+&&a[n] = \frac{1}{N} \sum_{m = 0}^{N - 1} A[m] e^{i 2 \pi mn/N}.
+\label{eq:DFT_pairs}
 \end{eqnarray}
-from which and Eq. (\ref{eq:DFT}) we will end up with
-\begin{eqnarray}
-	&&\sum_{k = 0}^{N - 1} A[k] e^{i 2 \pi mk/N} 
-	\nonumber\\
-	&&\hspace{0.3in} = \sum_{k = 0}^{N - 1} \sum_{n = 0}^{N - 1} U[n] e^{-i 2 \pi k(n - m)/N}
-	\nonumber\\
-	&&\hspace{0.3in} = N \sum_{n = 0}^{N - 1} U[n] \delta(n - m) = N U[m].
-\end{eqnarray}
-To sum up, the definitions of DFT and inverse DFT are obtained from the known continuous Fourier transform and represented as
-\begin{eqnarray}
-	&&A[m] = \sum_{n = 0}^{N - 1} U[n] e^{-i 2\pi m n/ N}
-	\nonumber\\
-	&&U[n] = \frac{1}{N} \sum_{m = 0}^{N - 1} A[m] e^{i 2 \pi mn/N}.
-	\label{eq:DFT_pairs}
-\end{eqnarray}
-The definition shown in Eq. (\ref{eq:DFT_pairs}) also corresponds to that of MATLAB, so there is no need to amend equations while working on the codes.
