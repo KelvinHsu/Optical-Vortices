@@ -3,34 +3,44 @@ clear
 %% Set parameters.
 num_samples = 1024; % Number of samples
 N = num_samples / 2;
-L = 100; % Lenth of signal
+L = 1e-5; % Width of laser beam, unit in meter
 Ls = L/num_samples; % Time step
 Fs = 1/L; % Freq. step
 v = Fs * (-N:N-1); % Freq. axis
 x = Ls * (-N:N-1); % Time axis
-lambda = 1; % Wavelength. Treated as unit
+lambda = 632e-9; % Wavelength of He-Ne Laser (632 nm)
 k = 2 * pi / lambda; % Wavenumber
-z = 0:0.01:0.5 * lambda; % Propagation along z axis
-log_z = logspace(0, 2, 3); % z axis in log-scale
+z = (0:0.01:0.49) * lambda; % Propagation along z axis
+log_z = logspace(0, 2, 3) * lambda; % z axis in log-scale
+
+W0 = 1e-3; % Beam waist
 
 %% Plot the 2D function exp(i \phi) and its fft2.
-f = @(x, y) exp(1i * atan(y/x));
-% Produce the wanted signal. Since the range of arctan is [-pi/2, pi/2], one
-% needs to extend the function so that exp(i \phi) can be properly sampled.
+f = @(x, y) exp(-(x^2 + y^2)/W0^2) * exp(1i * atan2(y, x));
 field = zeros(num_samples, num_samples);
 for i = 1:num_samples
     for j = 1:num_samples
-        if i > N + 1
-            field(i, j) = f((i - N - 1), (j - N - 1));
-        elseif i < N + 1 && j > N + 1
-            field(i, j) = f((i - N - 1), (j - N - 1)) * exp(1i * pi);
-        elseif i < N + 1 && j < N + 1
-            field(i, j) = f((i - N - 1), (j - N - 1)) * exp(-1i * pi);
-        else
-            field(i, j) = exp(1i * pi/2 * sign(j - N - 1));
-        end
+        field(i, j) = f(x(j), x(i));
     end
 end
+
+% f = @(x, y) exp(1i * atan(y/x));
+% Produce the wanted signal. Since the range of arctan is [-pi/2, pi/2], one
+% needs to extend the function so that exp(i \phi) can be properly sampled.
+% field = zeros(num_samples, num_samples);
+% for i = 1:num_samples
+%     for j = 1:num_samples
+%         if i > N + 1
+%             field(i, j) = f((i - N - 1), (j - N - 1));
+%         elseif i < N + 1 && j > N + 1
+%             field(i, j) = f((i - N - 1), (j - N - 1)) * exp(1i * pi);
+%         elseif i < N + 1 && j < N + 1
+%             field(i, j) = f((i - N - 1), (j - N - 1)) * exp(-1i * pi);
+%         else
+%             field(i, j) = exp(1i * pi/2 * sign(j - N - 1));
+%         end
+%     end
+% end
 Field = fftshift(fft2(field));
 
 %% Calculate the field expression after propagation along z.
@@ -57,8 +67,8 @@ end
 
 %% Analyse the phase
 % These are x, y values corresponding to r = 0.1, 0.3, 0.5, 1 lambda.
-r_x = N + 1 + [1 3 5 10];
-r_y = N + 1 + [0 0 1 2];
+r_x = N + 1 + [4 12 12 41];
+r_y = N + 1 + [5 15 30 50];
 
 Phi = zeros(length(r_x), length(z));
 dip = zeros(length(r_x), length(z));

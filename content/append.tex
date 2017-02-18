@@ -24,20 +24,19 @@ If wave $A$ and $B$ coincide with each other on the $y = 0$ plane with an angle 
 where $\bar{k} = \hat{x} k_1 + \hat{z} k_3$ is the propagating vector of wave $A$, 
 $a_0$ and $\beta$ are constants representing the amplitudes of carrier and modulating waves, respectively.
 
-% Unable to show figure?
-%\begin{figure}[h]
-%	\vskip 6 cm
-%	\hskip 0.3 cm
-%	\special{wmf: primary_waves.pdf x=7 cm y=6 cm}
-%	\caption{Illustration for the primary waves $A$ and $B$.}
-%	\label{fig:two_primary_waves}
-%\end{figure}
 \begin{figure}[h]
-	\centering
-	\includegraphics[width = 0.4\textwidth]{primary_waves.jpg}
+	\vskip 6 cm
+	\hskip 0.3 cm
+	\special{wmf: primary_waves.pdf x=7 cm y=6 cm}
 	\caption{Illustration for the primary waves $A$ and $B$.}
 	\label{fig:two_primary_waves}
 \end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width = 0.4\textwidth]{primary_waves.jpg}
+%	\caption{Illustration for the primary waves $A$ and $B$.}
+%	\label{fig:two_primary_waves}
+%\end{figure}
 
 Let $c = \omega/k$, $k_1 = k \sin \alpha$, $k_3 = k \cos \alpha$, $\xi = k_1 x$, $\zeta = k_3 z - \omega t$ and $\eta = k_1 y$. 
 The resultant complex wave field can be represented by the superposition of $A$ and $B$,
@@ -157,20 +156,20 @@ where the last complex contour integration is performed counterclockwise along t
 	\label{eq:CPV}
 \end{eqnarray}
 where $C_{\epsilon}$ is a curve defined as Fig. \ref{fig:contour}.
-% Unable to show figure?
-%\begin{figure}[h]
-%	\vskip 6 cm
-%	\hskip 0.3 cm
-%	\special{wmf: contour.pdf x=7 cm y=6 cm}
-%	\caption{Contour of $C_{\epsilon}$.}
+
+\begin{figure}[h]
+	\vskip 6 cm
+	\hskip 0.3 cm
+	\special{wmf: contour.pdf x=7 cm y=6 cm}
+	\caption{Contour of $C_{\epsilon}$.}
+	\label{fig:contour}
+\end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width = .4\textwidth]{contour.jpg}
+%	\caption{Contour of $C_{\epsilon}$, which is formed by the boundary of the union of the unit circle centered at the origin and two circles with radius $\epsilon$ centered at $i, -i$, repectively.}
 %	\label{fig:contour}
 %\end{figure}
-\begin{figure}
-		\centering
-		\includegraphics[width = .4\textwidth]{contour.jpg}
-		\caption{Contour of $C_{\epsilon}$, which is formed by the boundary of the union of the unit circle centered at the origin and two circles with radius $\epsilon$ centered at $i, -i$, repectively.}
-		\label{fig:contour}
-\end{figure}
 Note that $C_{\epsilon} \rightarrow C$ as $\epsilon \rightarrow 0$. The contour integration on $C_{\epsilon}$, on the other hand, can be evaluated by residue theorem.
 \begin{eqnarray}
 	\oint_{C_{\epsilon}} \frac{z^2}{(z^2 + 1)^2} = 2\pi i \left( {\rm Res}(f; i) + {\rm Res}(f; -i) \right),
@@ -187,6 +186,7 @@ Hence, Eq. (\ref{eq:thm_residue}) yields
 \end{eqnarray}
 
 \section*{Appendix III: Paraxial Wave Eqation}
+\label{sec:pwe}
 Given a monochromatic electromagnetic field $\tilde{U}(x, y, z) \exp(-i \omega t) = U(x, y, z)\exp[i (kz - \omega t)]$, we have known that it satisfies the Helmholtz equation
 \begin{eqnarray}
 	\left(\nabla^2 + k^2\right) \tilde{U}(x, y, z) = 0.
@@ -225,46 +225,195 @@ Otherwise, the function $u(x)$ must be truncated such that $u(x) \neq 0$ only if
 Consider $N$ equispaced samples at $x = n \Delta x$, where $\Delta x = L_x / N$.
 Thus, $u (x)$ is sampled to form a sequence $\{ u[n] \}$, with
 \begin{eqnarray}
-&&u [n] = u (x = n \Delta x)
-\nonumber
+	&&u [n] = u (x = n \Delta x)
+	\nonumber
 \end{eqnarray}
 The Fourier transform of $u(x)$ is discretized as
 \begin{eqnarray}
-&&\hspace{-0.3in} U (\nu) = \int_{-\infty}^{\infty} u (x) e^{- i 2 \pi \nu x} dx
-\simeq \Delta x \sum_{n = 0}^{N - 1} u (n \Delta x) e^{- i 2 \pi \nu n \Delta x}
-\nonumber
+	&&\hspace{-0.3in} U (\nu) = \int_{-\infty}^{\infty} u (x) e^{- i 2 \pi \nu x} dx
+	\simeq \Delta x \sum_{n = 0}^{N - 1} u (n \Delta x) e^{- i 2 \pi \nu n \Delta x}
+	\nonumber
 \end{eqnarray}
 The spectrum is also discretized as
 \begin{eqnarray}
-&&\hspace{-0.3in} U[m] = U (m \Delta \nu)  \simeq \Delta x \sum_{n = 0}^{N - 1} u [n] e^{- i 2 \pi m \Delta \nu n \Delta x}
-\label{eqn_3041}
+	&&\hspace{-0.3in} U[m] = U (m \Delta \nu) \simeq \Delta x \sum_{n = 0}^{N - 1} u [n] e^{- i 2 \pi m \Delta \nu n \Delta x}
+	\label{eqn_3041}
 \end{eqnarray}
 By demanding the uncertainty principle that $\Delta \nu \Delta x =  1/N$,
 (\ref{eqn_3041}) is reduced to
 \begin{eqnarray}
-&&U[m] \simeq \Delta x \sum_{n = 0}^{N - 1} u [n] e^{- i 2 \pi m n / N}
-\label{eqn_3042}
+	&&U[m] \simeq \Delta x \sum_{n = 0}^{N - 1} u [n] e^{- i 2 \pi m n / N}
+	\label{eqn_3042}
+\end{eqnarray}
+which can be implemented as
+\begin{eqnarray}
+	&&U[m] = \Delta x {\rm FFT} \{ u [n] \}
+	\label{eqn_3042a}
 \end{eqnarray}
 
 Similarly, the inverse Fourier transform of $U (\nu)$ is discretized as
 \begin{eqnarray}
-&&\hspace{-0.3in} u(x) = \int_{-\infty}^{\infty} U (\nu) e^{i 2 \pi \nu x} d \nu
-\simeq \Delta \nu \sum_{m = 0}^{N - 1} U (m \Delta \nu) e^{i 2 \pi m \Delta \nu x}
-\nonumber
+	&&\hspace{-0.3in} u(x) = \int_{-\infty}^{\infty} U (\nu) e^{i 2 \pi \nu x} d \nu
+	\simeq \Delta \nu \sum_{m = 0}^{N - 1} U (m \Delta \nu) e^{i 2 \pi m \Delta \nu x}
+	\nonumber
 \end{eqnarray}
 which is discretized as
 \begin{eqnarray}
-&&u[n] = u(n \Delta x) 
-\simeq \Delta \nu \sum_{m = 0}^{N - 1} U [m] e^{i 2 \pi m \Delta \nu n \Delta x} 
-\nonumber \\
-&&= \frac{1}{N \Delta x} \sum_{m = 0}^{N - 1} U [m] e^{i 2 \pi m n /N} 
-\label{eqn_3043}
+	&&u[n] = u(n \Delta x) 
+	\simeq \Delta \nu \sum_{m = 0}^{N - 1} U [m] e^{i 2 \pi m \Delta \nu n \Delta x} 
+	\nonumber \\
+	&&= \frac{1}{N \Delta x} \sum_{m = 0}^{N - 1} U [m] e^{i 2 \pi m n /N} 
+	\label{eqn_3043}
+\end{eqnarray}
+which can be implemented as
+\begin{eqnarray}
+	&&u[n] = \frac{1}{\Delta x} {\rm IFFT} \{ U [m] \}
+	\label{eqn_3043a}
 \end{eqnarray}
 
 In MATLAB, the FFT and the IFFT are defined as
 \begin{eqnarray}
-&&A[m] = \sum_{n = 0}^{N - 1} a[n] e^{-i 2\pi m n/ N}
-\nonumber \\
-&&a[n] = \frac{1}{N} \sum_{m = 0}^{N - 1} A[m] e^{i 2 \pi mn/N}.
-\label{eq:DFT_pairs}
+	&&A[m] = \sum_{n = 0}^{N - 1} a[n] e^{-i 2\pi m n/ N}
+	\nonumber \\
+	&&a[n] = \frac{1}{N} \sum_{m = 0}^{N - 1} A[m] e^{i 2 \pi mn/N}.
+	\label{eq:DFT_pairs}
 \end{eqnarray}
+
+\textcolor{blue}{
+\section*{Appendix V: Gaussian Beam}
+Recalling the paraxial wave equation (PWE, Eq. (\ref{eq:pwe})) introduced in Section \ref{sec:pwe}, now we set out to find an important family of solutions to it.}
+
+\textcolor{blue}{
+We proceed by trials. Suppose a function which takes the form
+\begin{eqnarray}
+	\psi_0(r, z) = e^{i (P(z) + kr^2/2q(z))}
+	\label{eq:gb_trial}
+\end{eqnarray}
+for some undetermined $P(z)$ and $q(z)$ satisfies Eq. (\ref{eq:pwe}), where $r^2 = x^2 + y^2$. Writing PWE in cylindrical coordinates
+\begin{eqnarray}
+	\left[ \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial}{\partial r}\right) + 2ik \frac{\partial}{\partial z} \right] U(r, z) = 0
+\end{eqnarray}
+and substituting Eq. (\ref{eq:gb_trial}) into, we will have
+\begin{eqnarray}
+	&& \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial}{\partial r}\right) \psi_0
+	= \frac{1}{r} \frac{\partial}{\partial r} \left( \frac{ i k r^2}{q} \psi_0 \right)
+	\nonumber\\
+	&&\hspace{0.5in} = \frac{1}{r} \left[ \frac{2 i k r}{q} \psi_0 + \left( \frac{i k r^2}{q}\right)
+	\frac{\partial \psi_0}{\partial r} \right]
+	\nonumber\\
+	&&\hspace{0.5in} = \psi_0 \left[ \frac{2 i k }{q} 
+	+ \left( \frac{i k r}{q} \right) \left( \frac{ i k r}{q} \right) \right]
+	\nonumber\\
+	&&\hspace{0.5in} = \psi_0 \left( \frac{2 i k }{q} - \frac{k^2 r^2}{q^2} \right) 
+	\end{eqnarray}
+	and
+	\begin{eqnarray}
+	&& 2ik \frac{\partial \psi_0}{\partial z} = 2ik \psi_0 \left( i \frac{\partial P}{\partial z}
+	- i \frac{k r^2}{2 q^2} \frac{\partial q}{\partial z} \right)
+	\nonumber\\
+	&&\hspace{0.5in} = \psi_0 \left( -2k \frac{\partial P}{\partial z} + \frac{k^2 r^2}{q^2} 
+	\frac{\partial q}{\partial z} \right),
+	\end{eqnarray}
+	and finally
+	\begin{eqnarray}
+	&& \left[ \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial}{\partial r}\right) + 2ik \frac{\partial}{\partial z} \right] \psi_0
+	\nonumber\\
+	&&\hspace{0.5in} = \psi_0 \left[ 2k \left( \frac{i}{q} - \frac{\partial P}{\partial z} \right)
+	+ \frac{k^2 r^2}{q^2} \left( \frac{\partial q}{\partial z} - 1 \right) \right] = 0.
+	\nonumber
+	\end{eqnarray}
+	To determine $P$ and $q$, we solve the system
+	\begin{eqnarray}
+	&&\frac{\partial q}{\partial z} = 1,
+	\label{eq:pwe_q}\\
+	&&\frac{\partial P}{\partial z} = \frac{i}{q}.
+	\label{eq:pwe_P}
+\end{eqnarray}
+By demanding the integration constant to be pure imaginary, the solution to Eq. (\ref{eq:pwe_q}) is represented as
+\begin{eqnarray}
+	q(z) = z - i z_0
+\end{eqnarray}
+for some real constant $z_0$, which is know as {\em Rayleigh range}. Eq. (\ref{eq:pwe_P}) can therefore be solved as
+\begin{eqnarray}
+	P(z) = i \ln (1 + i \frac{z}{z_0}),
+\end{eqnarray}
+where we have used the initial condition $P(0) = 0$. Putting all pieces together, we will end up with
+\begin{eqnarray}
+	\psi_0(r, z) = \frac{1}{\sqrt{1 + (z/z_0)^2}} e^{-i\tan^{-1} (z/z_0)} 
+	e^{\frac{-k z_0 r^2 + i k z r^2}{2(z^2 + z_0^2)}}.
+	\label{eq:gb_z}
+\end{eqnarray}
+At this point we can define some important parameters
+\begin{eqnarray}
+	&& W_0 = \sqrt{\lambda z_0/\pi},
+	\nonumber\\
+	&& W(z) = W_0 \sqrt{1 + (z/z_0)^2},
+	\nonumber\\
+	&& R(z) = z(1 + (z_0/z)^2),
+	\nonumber\\
+	&& \zeta(z) = \tan^{-1}(z/z_0),
+	\nonumber
+\end{eqnarray}
+where $W_0$ is the beam waist, $W(z)$ is the measure of beam width, $R(z)$ represents the wavefront radius of curvature, and $\zeta(z)$ is called the {\em Gouy phase shift}. Hence, Eq. (\ref{eq:gb_z}) becomes
+\begin{eqnarray}
+	\psi_0(r, z) = \frac{W_0}{W(z)} e^{-r^2/W^2(z)} e^{i k r^2/ 2 R(z)} e^{-i \zeta(z)}.
+	\nonumber
+\end{eqnarray}
+Putting back the $e^{ikz}$ term, we obtain the expression for fundamental Gaussian beam
+\begin{eqnarray}
+	&& U(r, z) = \psi_0(r, z) e^{ikz}
+	\nonumber\\
+	&& \hspace{0.3in} = \frac{W_0}{W(z)} e^{-r^2/W^2(z)} e^{i k r^2/ 2 R(z)} e^{i (kz - \zeta(z))}.
+	\label{eq:gb}
+\end{eqnarray}
+}
+
+\section*{Appendix VI: Simulation and Testing}
+
+In this section, we will simulate the near-core structure with the approach in Section \ref{sec:angular_spectrum}
+and Fig.\ref{fig:commu_diag}. 
+The field \textcolor{blue}{$U(r, \phi, 0) = e^{-r^2/W_0^2} e^{i \phi}$} \textcolor{red}{Take Gaussian beam}
+is represented in the Cartesian coordinate as
+\begin{eqnarray}
+	&&\phi(x, y) = \left\{
+	\begin{array}{ll}
+		\tan^{-1}(y/x), & x > 0 \\ & \\
+		\tan^{-1}(y/x) + \pi, & x < 0, y > 0 \\ & \\
+		\tan^{-1}(y/x) - \pi, & x < 0, y < 0 \\ & \\
+		(\pi/2) {\rm sign}(y), & {\rm otherwise}
+	\end{array}
+	\right.
+\end{eqnarray}
+where 
+\begin{eqnarray}
+	{\rm sign}(y) = \left\{
+	\begin{array}{ll}
+		1, \hspace{0.2in}	& y > 0 \\ & \\
+		-1,		& y < 0 \\ & \\
+		0,		& y = 0
+	\end{array}
+	\right.
+\end{eqnarray}
+
+In the simulations, He-Ne laser with $\lambda = 672$ nm is chosen as the light source.
+The aperture is confined to $L_0 \times L_0$ in the $xy$ plane, with $L_0 = 10 \mu$m.
+\textcolor{blue}{The beam waist is taken to be $W_0 = 1$ mm, and the corresponding Rayleigh range is $z_0 = \pi W_0^2/ \lambda \simeq 4.675$ m}.
+The aperture length $L_0$ is sampled at $N = 1,024$ uniformly spaced points, in the $x$ and $y$ directions, 
+with intervals $\Delta x = \Delta y = L_0 / N$.
+The corresponding intervals in the spectral domain are $\Delta \nu_x = \Delta \nu_y = 1 / L_0$.
+
+The field expression after propagation over a distance of $z$ can be represented as:
+\begin{enumerate}
+	\item Compute $A(\nu_x, \nu_y, 0) = {\cal F} \{ U(x, y, 0) \}$.
+	\item Compute $\mu = \sqrt{ k^ 2 - 4 \pi^2 (\nu_x^2 + \nu_y^2)}$ and store in an $N \times N$ matrix.
+	\item Compute $A(\nu_x, \nu_y, z) = A(\nu_x, \nu_y, 0) e^{i \mu z}$. \textcolor{blue}{(Shall be modified?)}
+	\item Compute $U(x, y, z) = {\cal F}^{-1} \{A(\nu_x, \nu_y, z)\}$.
+\end{enumerate}
+
+After obtaining the phase information, we plot following types of diagrams:
+\begin{enumerate}
+	\item Fix $r = 0.1 \lambda, 0.3 \lambda, 0.5\lambda, 1.0 \lambda$, and plot the relationship between the retarded phase (helical component $\exp(i \phi)$ removed) $\Phi = {\rm arg}~ U(x, y, z) - \phi$ and propagation distance $z$.
+	\item  Fix $r = 0.1 \lambda, 0.3 \lambda, 0.5 \lambda, 1.0 \lambda$, and plot the relationship between the additional phase dip $kz - \Phi$ and propagation distance $z$.
+	\item For propagation distance $z = 1\lambda, 10 \lambda, 100 \lambda$, plot the retarded phase distribution $\Phi(x, y, z)$.
+	\item For propagation distance $z = 1\lambda, 10 \lambda, 100 \lambda$, plot the total phase distribution ${\rm arg}~ U(x, y, z)$.
+\end{enumerate}
