@@ -6,9 +6,11 @@
 *.blg
 *.mat
 *.key
-*.ppt
 *.jpg
 *.png
+*.ppt
+*.pptx
+sim
 reference
 versions
 files_for_jfk
