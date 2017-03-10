@@ -279,51 +279,50 @@ In MATLAB, the FFT and the IFFT are defined as
 	\label{eq:DFT_pairs}
 \end{eqnarray}
 
-\textcolor{blue}{
-\section*{Appendix V: Gaussian Beam}
-Recalling the paraxial wave equation (PWE, Eq. (\ref{eq:pwe})) introduced in Section \ref{sec:pwe}, now we set out to find an important family of solutions to it.}
+\section*{Appendix V: Gaussian Beam and Laguerre-Gaussian modes}
+\subsection{Fundamental Gaussian beam}
+Recalling the paraxial wave equation (PWE, Eq. (\ref{eq:pwe})) introduced in Section \ref{sec:pwe}, now we set out to find an important family of solutions to it.
 
-\textcolor{blue}{
-We proceed by trials. Suppose a function which takes the form
+We proceed by trials. Suppose a function $\tilde{U}(r, z) = U(r, z) e^{i k z}$ satisfies Eq. (\ref{eq:pwe}), where $U(r, z)$ takes the form
 \begin{eqnarray}
-	\psi_0(r, z) = e^{i (P(z) + kr^2/2q(z))}
+	U(r,  z) = e^{i [ P(z) + kr^2/2q(z)]}
 	\label{eq:gb_trial}
 \end{eqnarray}
-for some undetermined $P(z)$ and $q(z)$ satisfies Eq. (\ref{eq:pwe}), where $r^2 = x^2 + y^2$. Writing PWE in cylindrical coordinates
+for some undetermined $P(z)$ and $q(z)$ satisfies Eq. (\ref{eq:pwe}), where $r^2 = x^2 + y^2$.  Writing PWE in cylindrical coordinates
 \begin{eqnarray}
-	\left[ \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial}{\partial r}\right) + 2ik \frac{\partial}{\partial z} \right] U(r, z) = 0
+	\left[ \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial}{\partial r}\right) + 2ik \frac{\partial}{\partial z} \right] U(r, \phi, z) = 0
 \end{eqnarray}
 and substituting Eq. (\ref{eq:gb_trial}) into, we will have
 \begin{eqnarray}
-	&& \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial}{\partial r}\right) \psi_0
-	= \frac{1}{r} \frac{\partial}{\partial r} \left( \frac{ i k r^2}{q} \psi_0 \right)
+	&& \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial}{\partial r}\right) U
+	= \frac{1}{r} \frac{\partial}{\partial r} \left( \frac{ i k r^2}{q} U \right)
 	\nonumber\\
-	&&\hspace{0.5in} = \frac{1}{r} \left[ \frac{2 i k r}{q} \psi_0 + \left( \frac{i k r^2}{q}\right)
-	\frac{\partial \psi_0}{\partial r} \right]
+	&&\hspace{0.5in} = \frac{1}{r} \left[ \frac{2 i k r}{q} U + \left( \frac{i k r^2}{q}\right)
+	\frac{\partial U}{\partial r} \right]
 	\nonumber\\
-	&&\hspace{0.5in} = \psi_0 \left[ \frac{2 i k }{q} 
+	&&\hspace{0.5in} = U \left[ \frac{2 i k }{q} 
 	+ \left( \frac{i k r}{q} \right) \left( \frac{ i k r}{q} \right) \right]
 	\nonumber\\
-	&&\hspace{0.5in} = \psi_0 \left( \frac{2 i k }{q} - \frac{k^2 r^2}{q^2} \right) 
-	\end{eqnarray}
-	and
-	\begin{eqnarray}
-	&& 2ik \frac{\partial \psi_0}{\partial z} = 2ik \psi_0 \left( i \frac{\partial P}{\partial z}
+	&&\hspace{0.5in} = U \left( \frac{2 i k }{q} - \frac{k^2 r^2}{q^2} \right) 
+\end{eqnarray}
+and
+\begin{eqnarray}
+	&& 2ik \frac{\partial U}{\partial z} = 2ik U \left( i \frac{\partial P}{\partial z}
 	- i \frac{k r^2}{2 q^2} \frac{\partial q}{\partial z} \right)
 	\nonumber\\
-	&&\hspace{0.5in} = \psi_0 \left( -2k \frac{\partial P}{\partial z} + \frac{k^2 r^2}{q^2} 
+	&&\hspace{0.5in} = U \left( -2k \frac{\partial P}{\partial z} + \frac{k^2 r^2}{q^2} 
 	\frac{\partial q}{\partial z} \right),
-	\end{eqnarray}
-	and finally
-	\begin{eqnarray}
-	&& \left[ \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial}{\partial r}\right) + 2ik \frac{\partial}{\partial z} \right] \psi_0
+\end{eqnarray}
+and finally
+\begin{eqnarray}
+	&& \left[ \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial}{\partial r}\right) + 2ik \frac{\partial}{\partial z} \right] U
 	\nonumber\\
-	&&\hspace{0.5in} = \psi_0 \left[ 2k \left( \frac{i}{q} - \frac{\partial P}{\partial z} \right)
+	&&\hspace{0.5in} = U \left[ 2k \left( \frac{i}{q} - \frac{\partial P}{\partial z} \right)
 	+ \frac{k^2 r^2}{q^2} \left( \frac{\partial q}{\partial z} - 1 \right) \right] = 0.
 	\nonumber
-	\end{eqnarray}
-	To determine $P$ and $q$, we solve the system
-	\begin{eqnarray}
+\end{eqnarray}
+To determine $P$ and $q$, we solve the system
+\begin{eqnarray}
 	&&\frac{\partial q}{\partial z} = 1,
 	\label{eq:pwe_q}\\
 	&&\frac{\partial P}{\partial z} = \frac{i}{q}.
@@ -339,7 +338,7 @@ for some real constant $z_0$, which is know as {\em Rayleigh range}. Eq. (\ref{e
 \end{eqnarray}
 where we have used the initial condition $P(0) = 0$. Putting all pieces together, we will end up with
 \begin{eqnarray}
-	\psi_0(r, z) = \frac{1}{\sqrt{1 + (z/z_0)^2}} e^{-i\tan^{-1} (z/z_0)} 
+	U(r, z) = \frac{1}{\sqrt{1 + (z/z_0)^2}} e^{-i\tan^{-1} (z/z_0)} 
 	e^{\frac{-k z_0 r^2 + i k z r^2}{2(z^2 + z_0^2)}}.
 	\label{eq:gb_z}
 \end{eqnarray}
@@ -356,64 +355,155 @@ At this point we can define some important parameters
 \end{eqnarray}
 where $W_0$ is the beam waist, $W(z)$ is the measure of beam width, $R(z)$ represents the wavefront radius of curvature, and $\zeta(z)$ is called the {\em Gouy phase shift}. Hence, Eq. (\ref{eq:gb_z}) becomes
 \begin{eqnarray}
-	\psi_0(r, z) = \frac{W_0}{W(z)} e^{-r^2/W^2(z)} e^{i k r^2/ 2 R(z)} e^{-i \zeta(z)}.
+	U(r, z) = \frac{W_0}{W(z)} e^{-r^2/W^2(z)} e^{i k r^2/ 2 R(z)} e^{-i \zeta(z)}.
 	\nonumber
 \end{eqnarray}
 Putting back the $e^{ikz}$ term, we obtain the expression for fundamental Gaussian beam
 \begin{eqnarray}
-	&& U(r, z) = \psi_0(r, z) e^{ikz}
+	&& \tilde{U}(r, z) = U(r, z) e^{ikz}
 	\nonumber\\
 	&& \hspace{0.3in} = \frac{W_0}{W(z)} e^{-r^2/W^2(z)} e^{i k r^2/ 2 R(z)} e^{i (kz - \zeta(z))}.
 	\label{eq:gb}
 \end{eqnarray}
+\textcolor{blue}{
+For convenience, we will refer to Eq. (\ref{eq:gb}) by $\tilde{U}_0 = U_0 e^{ikz}$ in the following context.
 }
 
-\section*{Appendix VI: Simulation and Testing}
+\subsection{Laguerre-Gaussian modes}
+In order to take the orbital angular momentan (OAM) presented by vortices into acounts, one need not only the fundamental Gaussian mode but a higher order family derived from it. Similarly, one can pick out reasonable trials from what we have already learned in the derivation of Gaussian beams and check the necessary conditions for them to satisfy paraxial wave equation (\ref{eq:pwe}). In Appendix I we have briefly investigated the nature of vortices, which are skrew-dislocations and characterized by a helical phase term $e^{i m \phi}$, so it is tempting to consider if the function $U_0 e^{im \phi}$, where $U_0$ is the fundamental Gaussian beam, satisfies PWE. Unfortunately, this can not achieve the goal due to appearance of extra terms. Another plausible option is
+\begin{eqnarray}
+	U(r, \phi, z) = U_0 S(r) e^{i m \theta}.
+	\label{eq:trial_lag_gb}
+\end{eqnarray}
+This trial, however, will be shown to result in a set of solutions to PWE called Laguerre-Gaussian modes.
 
+By substituing Eq. (\ref{eq:trial_lag_gb}) in to PWE, one will have
+\begin{eqnarray}
+	&&\left(\nabla_{\perp}^2 + 2 i k \frac{\partial}{\partial z}\right) U(r, \phi, z)
+	\nonumber\\
+	&& \hspace{0.3in} = U_0 e^{i m \phi} \left[ \frac{d^2 S}{d r^2} + 
+		\left( \frac{2 i k r}{q} + \frac{1}{r} \right) \frac{d S}{d r} 
+			- \frac{m^2}{r^2} S \right].
+	\nonumber
+\end{eqnarray}
+Thus the unknown function $S(r)$ can be determined by solving the ordinary differential equation
+\begin{eqnarray}
+	S'' + \left( \frac{2 i k r}{q} + \frac{1}{r} \right) S' - \frac{m^2}{r^2} S = 0.
+\end{eqnarray}
+
+\textcolor{magenta}{If we perform the transformation and change of variable
+\begin{eqnarray}
+	&&S(r) = \left(\frac{\sqrt{2}r}{W(z)}\right)^{m} \tilde{S}(r),
+	\nonumber\\
+	&&r^2 = \frac{W^2(z)}{2} u,
+	\nonumber
+\end{eqnarray}
+the ODE becomes
+\begin{eqnarray}
+	u \tilde{S}''(u) + (m + 1 - p)\tilde{S}'(u) + p\tilde{S}(u) = 0,
+\end{eqnarray}
+which is the Laguerre differential equation and has the solution
+\begin{eqnarray}
+	\tilde{S}(u) = L_{pm}(u),
+\end{eqnarray}
+where $L_{pm}(u)$ is the generalized Laguerre polynomial. In summary, the solution can be represented by
+\begin{eqnarray}
+	&&U^{p}_{m}(r, \phi, z)
+	\nonumber\\
+	&&= \frac{W_0}{W(z)} \left(\frac{\sqrt{2} r}{W(z)}\right)^{m} L_{pm}\left(\frac{2 r^2}{W^2(z)}\right)
+	\nonumber\\
+	&&\hspace{0.5in} e^{-r^2/W^2(z)}  e^{i \left[k r^2/ 2 R(z) + kz - \zeta(z) + m \phi\right]}.
+\end{eqnarray}}
+
+\textcolor{blue}{
+Another appoarch to obtain the expression for Laguerre-Gaussian modes is by Fresnel's diffraction theory under the paraxial assumption, which is equivalent to our angular spectrum method (except that evanescent components of the spectrum plays no role under paraxial approximation). According to the theory, the complex amplitude wave function after propagation over $z$ can be reprsented by the convolution of field distribution at $z = 0$ with the Fresnel kernel $h(x, y, z) = (1 / i \lambda z) \exp(ik(x^2 + y^2)/2z)$. Since Fresnel diffraction integral has assumed paraxial condition, the result derived will still satisfy PWE as long as the initial aperture field does.
+}
+
+\textcolor{blue}{
+One can check the function
+\begin{eqnarray}
+	U_{m}^{p}(r, \phi, 0) = C_{mp} L^{|m|}_{p}\left( \frac{2r^2}{W_0^2} \right)
+		e^{-r^2/W_0^2} e^{i m \phi}
+\end{eqnarray}
+will indeed satisfy PWE Eq. (\ref{eq:pwe}). By carrying out the integral in Cartesian coordinates,
+\begin{eqnarray}
+	U_{m}^{p}(x, y, z) = \frac{1}{i \lambda z} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}
+		U_{m}^{p}(x_0, y_0, 0) \times
+	\nonumber\\
+	e^{ik[(x - x_0)^2 + (y - y_0)^2]/2z} dx_0 dy_0,
+\end{eqnarray}
+finally one will obtain
+\begin{eqnarray}
+	U_{m}^{p}(r, \phi, z) = \frac{C_{mp}}{W} \left(\frac{\sqrt{2} r}{W}\right)^{|m|}
+		e^{-r^2/W^2} L^{|m|}_{p}\left( \frac{2r^2}{W^2} \right) \times
+	\nonumber\\
+	e^{i(2p + m + 1)\zeta + i kr^2/2R} e^{im\phi},
+\end{eqnarray}
+where $C_{mp}$ is a normalization constant represented by
+\begin{eqnarray}
+	C_{mp} = \sqrt{\frac{2p!}{\pi (p + |m|)!}}.
+\end{eqnarray}}
+
+\textcolor{blue}{
+\section*{Appendix VI: Simulation and Testing}
 In this section, we will simulate the near-core structure with the approach in Section \ref{sec:angular_spectrum}
 and Fig.\ref{fig:commu_diag}. 
-The field \textcolor{blue}{$U(r, \phi, 0) = e^{-r^2/W_0^2} e^{i \phi}$} \textcolor{red}{Take Gaussian beam}
-is represented in the Cartesian coordinate as
+We will start from the wave expression for the Laguerre-Gaussian ${\rm LG}^{0}_{1}$ mode, which is characterized by an optical vortex of strength $1$ at the center.
+The field of ${\rm LG}^{0}_{1}$ vortex beam is represented at $z = 0$ as
 \begin{eqnarray}
-	&&\phi(x, y) = \left\{
-	\begin{array}{ll}
-		\tan^{-1}(y/x), & x > 0 \\ & \\
-		\tan^{-1}(y/x) + \pi, & x < 0, y > 0 \\ & \\
-		\tan^{-1}(y/x) - \pi, & x < 0, y < 0 \\ & \\
-		(\pi/2) {\rm sign}(y), & {\rm otherwise}
-	\end{array}
-	\right.
+U(r, \phi, 0) = \frac{2r}{\sqrt{\pi} W_0^2} e^{-r^2/W_0^2} e^{i\phi} 
 \end{eqnarray}
-where 
-\begin{eqnarray}
-	{\rm sign}(y) = \left\{
-	\begin{array}{ll}
-		1, \hspace{0.2in}	& y > 0 \\ & \\
-		-1,		& y < 0 \\ & \\
-		0,		& y = 0
-	\end{array}
-	\right.
-\end{eqnarray}
+}
 
-In the simulations, He-Ne laser with $\lambda = 672$ nm is chosen as the light source.
+%\begin{eqnarray}
+%	&&\phi(x, y) = \left\{
+%	\begin{array}{ll}
+%		\tan^{-1}(y/x), & x > 0 \\ & \\
+%		\tan^{-1}(y/x) + \pi, & x < 0, y > 0 \\ & \\
+%		\tan^{-1}(y/x) - \pi, & x < 0, y < 0 \\ & \\
+%		(\pi/2) {\rm sign}(y), & {\rm otherwise}
+%	\end{array}
+%	\right.
+%\end{eqnarray}
+%where 
+%\begin{eqnarray}
+%	{\rm sign}(y) = \left\{
+%	\begin{array}{ll}
+%		1, \hspace{0.2in}	& y > 0 \\ & \\
+%		-1,		& y < 0 \\ & \\
+%		0,		& y = 0
+%	\end{array}
+%	\right.
+%\end{eqnarray}
+
+\textcolor{blue}{In the simulations, He-Ne laser with $\lambda = 633$ nm is chosen as the light source.
 The aperture is confined to $L_0 \times L_0$ in the $xy$ plane, with $L_0 = 10 \mu$m.
-\textcolor{blue}{The beam waist is taken to be $W_0 = 1$ mm, and the corresponding Rayleigh range is $z_0 = \pi W_0^2/ \lambda \simeq 4.675$ m}.
+The beam waist is taken to be $W_0 = 0.388$ mm, and the corresponding Rayleigh range is $z_0 = \pi W_0^2/ \lambda \simeq 0.75$ m \cite{FSM05}.
 The aperture length $L_0$ is sampled at $N = 1,024$ uniformly spaced points, in the $x$ and $y$ directions, 
 with intervals $\Delta x = \Delta y = L_0 / N$.
-The corresponding intervals in the spectral domain are $\Delta \nu_x = \Delta \nu_y = 1 / L_0$.
+The corresponding intervals in the spectral domain are $\Delta \nu_x = \Delta \nu_y = 1 / L_0$.}
 
-The field expression after propagation over a distance of $z$ can be represented as:
+The field expression after propagation over a distance of $z$ can be obtained by two appoarches. One of them is:
 \begin{enumerate}
 	\item Compute $A(\nu_x, \nu_y, 0) = {\cal F} \{ U(x, y, 0) \}$.
-	\item Compute $\mu = \sqrt{ k^ 2 - 4 \pi^2 (\nu_x^2 + \nu_y^2)}$ and store in an $N \times N$ matrix.
-	\item Compute $A(\nu_x, \nu_y, z) = A(\nu_x, \nu_y, 0) e^{i \mu z}$. \textcolor{blue}{(Shall be modified?)}
+	\item Compute $\mu = -2 \pi^2 (\nu_x^2 + \nu_y^2) / k$ (obtained from paraxial approximation and dropping the $\exp(ikz)$ term).
+	\item Compute $A(\nu_x, \nu_y, z) = A(\nu_x, \nu_y, 0) e^{i \mu z}$.
 	\item Compute $U(x, y, z) = {\cal F}^{-1} \{A(\nu_x, \nu_y, z)\}$.
 \end{enumerate}
 
-After obtaining the phase information, we plot following types of diagrams:
+And the other follows:
 \begin{enumerate}
-	\item Fix $r = 0.1 \lambda, 0.3 \lambda, 0.5\lambda, 1.0 \lambda$, and plot the relationship between the retarded phase (helical component $\exp(i \phi)$ removed) $\Phi = {\rm arg}~ U(x, y, z) - \phi$ and propagation distance $z$.
-	\item  Fix $r = 0.1 \lambda, 0.3 \lambda, 0.5 \lambda, 1.0 \lambda$, and plot the relationship between the additional phase dip $kz - \Phi$ and propagation distance $z$.
-	\item For propagation distance $z = 1\lambda, 10 \lambda, 100 \lambda$, plot the retarded phase distribution $\Phi(x, y, z)$.
-	\item For propagation distance $z = 1\lambda, 10 \lambda, 100 \lambda$, plot the total phase distribution ${\rm arg}~ U(x, y, z)$.
+	\item For fixed $z$, discretize $h(x, y, z) = (1/i \lambda z) \exp[i k (x^2 + y^2) / 2z]$ along $x$ and $y$ directions.
+	\item Discretize $U(x, y, 0)$.
+	\item Compute $U(x, y, z) = h(x, y, z) * U(x, y, 0)$.
 \end{enumerate}
+
+After the computation of the field at $z = \lambda, 10\lambda, 100\lambda$, we plot the evolution of vortex beam and compare them with the exact solution.
+
+%After obtaining the phase information, we plot following types of diagrams:
+%\begin{enumerate}
+%	\item Fix $r = 0.1 \lambda, 0.3 \lambda, 0.5\lambda, 1.0 \lambda$, and plot the relationship between the retarded phase (helical component $\exp(i \phi)$ removed) $\Phi = {\rm arg}~ U(x, y, z) - \phi$ and propagation distance $z$.
+%	\item  Fix $r = 0.1 \lambda, 0.3 \lambda, 0.5 \lambda, 1.0 \lambda$, and plot the relationship between the additional phase dip $kz - \Phi$ and propagation distance $z$.
+%	\item For propagation distance $z = 1\lambda, 10 \lambda, 100 \lambda$, plot the retarded phase distribution $\Phi(x, y, z)$.
+%	\item For propagation distance $z = 1\lambda, 10 \lambda, 100 \lambda$, plot the total phase distribution ${\rm arg}~ U(x, y, z)$.
+%\end{enumerate}

@@ -36,20 +36,19 @@ To analyze the phase delay, we need to introduce the angular spectrum method. Co
 	\nonumber
 \end{eqnarray}
 Here the Fourier basis function $e^{i2\pi (\nu_x x + \nu_y y)}$ can be interpreted as a plane wave of unit amplitude transmitting with the direction cosines $\cos\theta_x = \lambda \nu_x$, $\cos\theta_y = \lambda \nu_y$ and $\cos\theta_z = (1 - (\lambda \nu_x)^2 - (\lambda \nu_y)^2)^{1/2}$ \cite{Fo04}. (See Fig. \ref{fig:dirc_cos} for reference on direction cosine.)
-% Unable to show figure?
-%\begin{figure}[h]
-%	\vskip 3 cm
-%	\hskip 0.3 cm
-%	\special{wmf: direction_cosines.jpg x=4 cm y=3 cm}
-%	\caption{Illustration of direction consines.}
-%	\label{fig:dirc_cos}
-%\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width = 0.3\textwidth]{direction_cosines.jpg}
+\begin{figure}[h]
+	\vskip 3 cm
+	\hskip 0.3 cm
+	\special{wmf: direction_cosines.jpg x=4 cm y=3 cm}
 	\caption{Illustration of direction consines.}
 	\label{fig:dirc_cos}
 \end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width = 0.3\textwidth]{direction_cosines.jpg}
+%	\caption{Illustration of direction consines.}
+%	\label{fig:dirc_cos}
+%\end{figure}
 With this perspective, the 2-D Fourier transform becomes the decompostion of a field into plane waves with different direction cosines, whence the representation method is called {\em angular spectrum}.
 
 
@@ -73,19 +72,18 @@ If $k^2 \ge 4\pi^2 (\nu_x^2 + \nu_y^22)$, $\mu$ will be a real number and Eq. (\
 
 By means of Eq. (\ref{eq:spectrum_phase}), the spectrum in two arbitrary transverse planes $z = z_1, z_2$ can be related by $A(\nu_x, \nu_y, z_2) = e^{i \mu (z_2 - z_1)} A(\nu_x, \nu_y, z_1)$. Having established the angular spectrum method, we can, given the initial field distribution $U(x, y, 0)$, analyze the evolution of vortex beam field $U(x, y, z)$ as $z$ increases by working on the frequency domain,
 
-%\begin{figure}[h]
-%	\vskip 3 cm
-%	\hskip 0.3 cm
-%	\special{wmf: cd.jpg x=4 cm y=3 cm}
-%	\caption{The commutation diagram.}
-%	\label{fig:commu_diag}
-%\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width = 0.3\textwidth]{cd.jpg}
+\begin{figure}[h]
+	\vskip 3 cm
+	\hskip 0.3 cm
+	\special{wmf: cd.jpg x=4 cm y=3 cm}
 	\caption{The commutation diagram.}
 	\label{fig:commu_diag}
 \end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width = 0.3\textwidth]{cd.jpg}
+%	\caption{The commutation diagram.}
+%\end{figure}
 
 Due to the fact that the above commutation diagram commutes, we can obtain the field expression $U(x, y, z)$ given $U(x, y, 0)$ by transforming $U(x, y, 0)$ to frequency-doamin, performing a frequency response of $e^{i \mu z}$ and trasforming the result back to the time-domain. Recall that the field expression of a on-axis vortex beam with $m = 1$ is represented by $\psi = Ce^{i (\phi + k_z z)}$ for some constant $C$. Hence, we may suppose without loss of generousity that $C = 1$ and put $U(x, y, 0) = e^{i\phi}$. The corresponding $A(\nu_x, \nu_y, 0)$ can be then computed by 2-D Fourier transformation in cylindrical coordinates (see Appendix II),
 \begin{eqnarray}
